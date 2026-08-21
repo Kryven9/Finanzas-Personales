@@ -1,4 +1,4 @@
-export const manejarErrores = (err, req, res, next) => {
+export const manejarErrores = (err, req, res, _next) => {
   console.error('Error:', err);
 
   const statusCode = err.statusCode || 500;

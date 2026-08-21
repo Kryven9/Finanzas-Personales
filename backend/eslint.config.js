@@ -1,24 +1,28 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import { defineConfig, globalIgnores } from 'eslint/config'
-import prettier from 'eslint-config-prettier'
+import js from '@eslint/js';
+import globals from 'globals';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import prettier from 'eslint-config-prettier';
 
 export default defineConfig([
-    globalIgnores(['dist', 'node_modules', 'coverage']),
+  globalIgnores(['dist', 'node_modules', 'coverage']),
 
-    js.configs.recommended,
+  js.configs.recommended,
 
-    {
-        files: ['**/*.js'],
+  {
+    files: ['**/*.js'],
 
-        languageOptions: {
-            ecmaVersion: 'latest',
-            sourceType: 'module',
-            globals: {
-                ...globals.node,
-            },
-        },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
     },
 
-    prettier,
-])
+    rules: {
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
+
+  prettier,
+]);
