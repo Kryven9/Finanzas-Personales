@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import { manejarErrores } from './shared/middlewares/error.middleware.js';
 import authRoutes from './modules/auth/auth.routes.js';
 import userRoutes from './modules/users/user.routes.js';
+import accountRoutes from './modules/accounts/account.routes.js';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/accounts', accountRoutes);
 
 // Middleware de manejo de errores
 app.use(manejarErrores);
