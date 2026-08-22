@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Wallet,
+  Tags,
   ArrowLeftRight,
   PiggyBank,
   Target,
@@ -12,6 +13,7 @@ import {
 const enlaces = [
   { to: '/', etiqueta: 'Dashboard', icono: LayoutDashboard },
   { to: '/cuentas', etiqueta: 'Cuentas', icono: Wallet },
+  { to: '/categorias', etiqueta: 'Categorías', icono: Tags },
   { to: '/transacciones', etiqueta: 'Transacciones', icono: ArrowLeftRight },
   { to: '/presupuestos', etiqueta: 'Presupuestos', icono: PiggyBank },
   { to: '/metas', etiqueta: 'Metas', icono: Target },

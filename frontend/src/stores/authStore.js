@@ -45,7 +45,7 @@ const useAuthStore = create((set) => ({
     try {
       await api.post('/auth/logout');
     } catch {
-    // ignorar errores al cerrar sesión
+      // ignorar errores al cerrar sesión
     }
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');

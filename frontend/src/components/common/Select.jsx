@@ -1,13 +1,19 @@
 import { useState } from 'react';
 
-const Select = ({ label, error, opciones, valor, onChange, placeholder = 'Seleccionar...', ...props }) => {
+const Select = ({
+  label,
+  error,
+  opciones,
+  valor,
+  onChange,
+  placeholder = 'Seleccionar...',
+  ...props
+}) => {
   const [enfocado, setEnfocado] = useState(false);
 
   return (
     <div className="flex flex-col gap-1.5">
-      {label && (
-        <label className="text-sm font-medium text-neutral-700">{label}</label>
-      )}
+      {label && <label className="text-sm font-medium text-neutral-700">{label}</label>}
       <select
         value={valor}
         onChange={onChange}

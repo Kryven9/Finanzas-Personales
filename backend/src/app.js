@@ -5,6 +5,7 @@ import { manejarErrores } from './shared/middlewares/error.middleware.js';
 import authRoutes from './modules/auth/auth.routes.js';
 import userRoutes from './modules/users/user.routes.js';
 import accountRoutes from './modules/accounts/account.routes.js';
+import categoryRoutes from './modules/categories/category.routes.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/accounts', accountRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // Middleware de manejo de errores
 app.use(manejarErrores);
