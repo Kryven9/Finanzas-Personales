@@ -6,11 +6,7 @@ const Alerta = ({ tipo = 'error', mensaje }) => {
     exito: 'bg-green-50 text-green-700 border-green-200',
   };
 
-  return (
-    <div className={`p-3 rounded-lg border text-sm ${estilos[tipo]}`}>
-      {mensaje}
-    </div>
-  );
+  return <div className={`p-3 rounded-lg border text-sm ${estilos[tipo]}`}>{mensaje}</div>;
 };
 
 export default Alerta;

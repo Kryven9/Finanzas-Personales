@@ -58,17 +58,18 @@ const Cuentas = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-neutral-900">Cuentas</h1>
           <p className="text-sm text-neutral-500 mt-1">Gestiona tus cuentas financieras</p>
         </div>
-        <Button tipo="primario" onClick={() => setModalCrear(true)}>
-          <span className="flex items-center gap-2">
-            <Plus className="w-4 h-4" />
-            Nueva Cuenta
-          </span>
-        </Button>
+        <button
+          onClick={() => setModalCrear(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors shrink-0"
+        >
+          <Plus className="w-4 h-4" />
+          Nueva Cuenta
+        </button>
       </div>
 
       <Alerta tipo="error" mensaje={error} />
@@ -138,11 +139,7 @@ const Cuentas = () => {
       </Modal>
 
       {/* modal editar */}
-      <Modal
-        abierto={!!modalEditar}
-        onClose={() => setModalEditar(null)}
-        titulo="Editar Cuenta"
-      >
+      <Modal abierto={!!modalEditar} onClose={() => setModalEditar(null)} titulo="Editar Cuenta">
         {modalEditar && (
           <FormularioCuenta
             cuenta={modalEditar}
@@ -162,12 +159,9 @@ const Cuentas = () => {
         <div className="flex flex-col gap-4">
           <Alerta tipo="error" mensaje={error} />
           <p className="text-sm text-neutral-600">
-            ¿Estás seguro de que deseas eliminar la cuenta{' '}
-            <strong>{modalEliminar?.nombre}</strong>?
+            ¿Estás seguro de que deseas eliminar la cuenta <strong>{modalEliminar?.nombre}</strong>?
           </p>
-          <p className="text-xs text-neutral-400">
-            Esta acción no se puede deshacer.
-          </p>
+          <p className="text-xs text-neutral-400">Esta acción no se puede deshacer.</p>
           <div className="flex gap-3">
             <Button tipo="secundario" onClick={() => setModalEliminar(null)}>
               Cancelar
