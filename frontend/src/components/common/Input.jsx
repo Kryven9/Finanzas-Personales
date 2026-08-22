@@ -8,7 +8,7 @@ const Input = ({ label, error, tipo = 'text', ...props }) => {
       {label && <label className="text-sm font-medium text-neutral-700">{label}</label>}
       <input
         type={tipo}
-        className={`w-full py-2.5 px-3 rounded-lg border bg-white text-black transition-colors outline-none ${
+        className={`w-full py-2 px-3 rounded-lg border bg-white text-sm text-black transition-colors outline-none ${
           error
             ? 'border-red-500 focus:border-red-600'
             : enfocado

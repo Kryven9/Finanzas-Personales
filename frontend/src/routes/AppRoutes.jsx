@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard/Dashboard';
 import EditarPerfil from '../pages/Profile/EditarPerfil';
 import Cuentas from '../pages/Accounts/Cuentas';
 import Categorias from '../pages/Categories/Categorias';
+import Transacciones from '../pages/Transactions/Transacciones';
 import RutaProtegida from '../components/common/RutaProtegida';
 import LayoutAutenticado from '../components/layout/LayoutAutenticado';
 
@@ -27,7 +28,7 @@ const AppRoutes = () => {
         <Route path="/perfil" element={<EditarPerfil />} />
         <Route path="/cuentas" element={<Cuentas />} />
         <Route path="/categorias" element={<Categorias />} />
-        <Route path="/transacciones" element={<Placeholder titulo="Transacciones" />} />
+        <Route path="/transacciones" element={<Transacciones />} />
         <Route path="/presupuestos" element={<Placeholder titulo="Presupuestos" />} />
         <Route path="/metas" element={<Placeholder titulo="Metas de Ahorro" />} />
         <Route path="/reportes" element={<Placeholder titulo="Reportes" />} />
