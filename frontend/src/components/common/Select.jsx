@@ -19,7 +19,7 @@ const Select = ({
         onChange={onChange}
         onFocus={() => setEnfocado(true)}
         onBlur={() => setEnfocado(false)}
-        className={`w-full py-2.5 px-3 rounded-lg border bg-white text-black transition-colors outline-none appearance-none cursor-pointer ${
+        className={`w-full py-2 px-3 rounded-lg border bg-white text-sm text-black transition-colors outline-none appearance-none cursor-pointer ${
           error
             ? 'border-red-500 focus:border-red-600'
             : enfocado
