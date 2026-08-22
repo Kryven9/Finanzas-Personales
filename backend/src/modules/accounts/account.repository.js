@@ -35,22 +35,38 @@ export const calcularSaldoActual = async (idCuenta) => {
   const resultado = await prisma.transaccion.aggregate({
     where: { idCuenta },
     _sum: { monto: true },
+    _avg: { monto: true },
   });
 
-  const sumaTransacciones = resultado._sum.monto || 0;
-  return Number(cuenta.saldoInicial) + Number(sumaTransacciones);
+  // sumar ingresos, restar gastos
+  const ingresos = await prisma.transaccion.aggregate({
+    where: { idCuenta, tipo: 'INGRESO' },
+    _sum: { monto: true },
+  });
+
+  const gastos = await prisma.transaccion.aggregate({
+    where: { idCuenta, tipo: 'GASTO' },
+    _sum: { monto: true },
+  });
+
+  const totalIngresos = Number(ingresos._sum.monto || 0);
+  const totalGastos = Number(gastos._sum.monto || 0);
+
+  return Number(cuenta.saldoInicial) + totalIngresos - totalGastos;
 };
 
 export const calcularPatrimonioNeto = async (idUsuario) => {
   const cuentas = await prisma.cuenta.findMany({
     where: { idUsuario },
     include: {
-      transacciones: { select: { monto: true } },
+      transacciones: { select: { monto: true, tipo: true } },
     },
   });
 
   return cuentas.reduce((total, cuenta) => {
-    const sumaTransacciones = cuenta.transacciones.reduce((sum, t) => sum + Number(t.monto), 0);
-    return total + Number(cuenta.saldoInicial) + sumaTransacciones;
+    const balance = cuenta.transacciones.reduce((sum, t) => {
+      return t.tipo === 'INGRESO' ? sum + Number(t.monto) : sum - Number(t.monto);
+    }, 0);
+    return total + Number(cuenta.saldoInicial) + balance;
   }, 0);
 };

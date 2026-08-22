@@ -6,6 +6,7 @@ import authRoutes from './modules/auth/auth.routes.js';
 import userRoutes from './modules/users/user.routes.js';
 import accountRoutes from './modules/accounts/account.routes.js';
 import categoryRoutes from './modules/categories/category.routes.js';
+import transactionRoutes from './modules/transactions/transaction.routes.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/accounts', accountRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/transactions', transactionRoutes);
 
 // Middleware de manejo de errores
 app.use(manejarErrores);
