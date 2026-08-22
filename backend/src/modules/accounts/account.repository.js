@@ -32,12 +32,6 @@ export const calcularSaldoActual = async (idCuenta) => {
 
   if (!cuenta) return null;
 
-  const resultado = await prisma.transaccion.aggregate({
-    where: { idCuenta },
-    _sum: { monto: true },
-    _avg: { monto: true },
-  });
-
   // sumar ingresos, restar gastos
   const ingresos = await prisma.transaccion.aggregate({
     where: { idCuenta, tipo: 'INGRESO' },
